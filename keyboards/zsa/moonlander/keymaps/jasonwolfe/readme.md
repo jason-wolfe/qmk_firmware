@@ -10,6 +10,13 @@ the Corne home row on the Moonlander home row; the three thumbs per side land on
 thumb cluster. The number row, the bottom row, the inner index-stretch keys and the
 right mission-control key are all dead.
 
+The thumbs are the one place where a strict positional mapping does not survive the
+hardware. The Corne's three thumb keys sit on an arc that puts all of them under the
+thumb; the Moonlander's are a straight row, so the key nearest the board's center
+line is an inward stretch rather than a natural landing spot. Space and Enter are
+therefore on the **outer** key of each cluster, not the inner one, with the inner key
+taking Delete on the left and nothing on the right.
+
 The one intentional deviation is the **left mission-control key**, which toggles
 between the Windows and Mac layouts. On the Corne this happened as a side effect of
 switching Bluetooth profiles; the Moonlander is wired, so it needs its own key.
@@ -38,9 +45,11 @@ Dead keys omitted for clarity; `*` marks the OS toggle.
  ESC¹   A      O      E      U      I   │   D      H      T      N      S     -
  CAPS   ;²     Q³     J⁴     K⁵     X   │   B      M⁵     W⁴     V³     Z²    /
 
-                              *  ┌──────────┐
-                    DEL  LOWER  SPC │ ENT  RAISE
+               [*]                      │                     [ ]
+        SPC  LOWER   DEL                │        ---   RAISE   ENT
 ```
+
+`[*]` is the left mission-control key (OS toggle); `[ ]` is the unused right one.
 
 ```
 ¹ hold = Ctrl     ² hold = GUI      ³ hold = Alt

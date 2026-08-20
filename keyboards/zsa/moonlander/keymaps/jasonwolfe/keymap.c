@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ESC_CTL, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    XXXXXXX,     XXXXXXX, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
         CW_TOGG, BR_SCLN, BR_Q,    BR_J,    BR_K,    KC_X,                          KC_B,    BR_M,    BR_W,    BR_V,    BR_Z,    KC_SLSH,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          PLAT_TG,     XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            KC_DEL,  MO(LOWER), KC_SPC,    KC_ENT,  MO(RAISE), XXXXXXX
+                                            KC_SPC,  MO(LOWER), KC_DEL,    XXXXXXX, MO(RAISE), KC_ENT
     ),
 
     // Layer 1 -- Windows raise
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, XXXXXXX,     XXXXXXX, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
         _______, _______, _______, _______, _______, _______,                       KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,     XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            _______, _______, KC_SPC,      KC_ENT,  _______, _______
+                                            KC_SPC,  _______, _______,     _______, _______, KC_ENT
     ),
 
     // Layer 2 -- Mac default (GUI<->CTRL swapped on the bottom row)
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ESC_CTL, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    XXXXXXX,     XXXXXXX, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
         CW_TOGG, MR_SCLN, BR_Q,    MR_J,    BR_K,    KC_X,                          KC_B,    BR_M,    MR_W,    BR_V,    MR_Z,    KC_SLSH,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          PLAT_TG,     XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            KC_DEL,  MO(LOWER), KC_SPC,    KC_ENT,  MO(MAC_RAISE), XXXXXXX
+                                            KC_SPC,  MO(LOWER), KC_DEL,    XXXXXXX, MO(MAC_RAISE), KC_ENT
     ),
 
     // Layer 3 -- Mac raise (Cmd browser shortcuts)
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, XXXXXXX,     XXXXXXX, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
         _______, _______, _______, _______, _______, _______,                       KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,     XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            _______, _______, KC_SPC,      KC_ENT,  _______, _______
+                                            KC_SPC,  _______, _______,     _______, _______, KC_ENT
     ),
 
     // Layer 4 -- shared lower (highest index of the momentary layers, never shadowed)
@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,     XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
         _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,                       _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,     XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            _______, _______, KC_SPC,      KC_ENT,  _______, _______
+                                            KC_SPC,  _______, _______,     _______, _______, KC_ENT
     ),
 
     // Layer 5 -- function keys, reached by holding both raise and lower
@@ -126,22 +126,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,     XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
         _______, KC_F11,  KC_F12,  _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,     XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            _______, _______, KC_SPC,      KC_ENT,  _______, _______
+                                            KC_SPC,  _______, _______,     _______, _______, KC_ENT
     ),
 };
 
 // Handedness for CHORDAL_HOLD, standing in for ZMK's hold-trigger-key-positions.
 // The thumbs are '*' (exempt from the opposite-hands rule) because KEYS_L and
 // KEYS_R were both paired with THUMBS_NO_SPACE. Space is the one thumb left out
-// of that list, so it stays 'L' -- and get_chordal_hold() below blocks it for the
-// right-hand mods too.
+// of that list, so it is 'L' -- and get_chordal_hold() below blocks it for the
+// right-hand mods too. Note this 'L' tracks whichever thumb key holds space; it
+// is the outer key of the left cluster, not the inner one.
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
     'L', 'L', 'L', 'L', 'L', 'L', 'L',    'R', 'R', 'R', 'R', 'R', 'R', 'R',
     'L', 'L', 'L', 'L', 'L', 'L', 'L',    'R', 'R', 'R', 'R', 'R', 'R', 'R',
     'L', 'L', 'L', 'L', 'L', 'L', 'L',    'R', 'R', 'R', 'R', 'R', 'R', 'R',
     'L', 'L', 'L', 'L', 'L', 'L',              'R', 'R', 'R', 'R', 'R', 'R',
     'L', 'L', 'L', 'L', 'L',      '*',    '*',      'R', 'R', 'R', 'R', 'R',
-                        '*', '*', 'L',    '*', '*', '*'
+                        'L', '*', '*',    '*', '*', '*'
 );
 // clang-format on
 
