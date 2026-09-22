@@ -1,5 +1,7 @@
 #pragma once
 
+#define DEBOUNCE 15
+
 #define TAPPING_TERM 75
 
 #define PLOOPY_DRAGSCROLL_DIVISOR_H 64.0
