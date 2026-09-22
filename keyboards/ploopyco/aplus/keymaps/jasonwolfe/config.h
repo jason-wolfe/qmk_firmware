@@ -25,17 +25,17 @@
    default of 5. */
 #define DEBOUNCE 15
 
-/* Drag-scroll speed, ported from my Madromys setting of 64.0 on both axes.
-   The divisors are NOT directly comparable between the two boards: the A+
-   enables POINTING_DEVICE_HIRES_SCROLL with a 120x multiplier, so the host
-   treats 120 wheel units as one notch. Effective ball counts per real notch
-   is therefore (divisor * 120), where on the Madromys it was just (divisor).
-   64 / 120 = 0.5333 reproduces the Madromys feel.
-   A+ stock values were H 1.0 (=120 counts/notch) and V 0.3 (=36). */
+/* Drag-scroll speed: 64 ball counts per scroll notch, same as my Madromys.
+   The A+ reports scroll in hi-res units (120 per notch), but many Windows
+   apps drop anything under a full notch in each wheel message, and at
+   ~1ms reports almost every drag-scroll report is a fraction of a notch.
+   So keep the Madromys divisor here and have pointing_device_task_user
+   scale each whole notch up to 120 units by the hi-res multiplier.
+   Every app then sees whole notches, just like on the Madromys. */
 #undef PLOOPY_DRAGSCROLL_DIVISOR_H
 #undef PLOOPY_DRAGSCROLL_DIVISOR_V
-#define PLOOPY_DRAGSCROLL_DIVISOR_H 0.5333
-#define PLOOPY_DRAGSCROLL_DIVISOR_V 0.5333
+#define PLOOPY_DRAGSCROLL_DIVISOR_H 64.0
+#define PLOOPY_DRAGSCROLL_DIVISOR_V 64.0
 
 /* Milliseconds the drag-scroll key must be held before it flips from
    tap-to-lock into momentary mode. See PKC_DRAG_SCROLL in keymap.c. */

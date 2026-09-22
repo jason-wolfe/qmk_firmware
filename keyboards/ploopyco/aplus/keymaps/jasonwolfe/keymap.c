@@ -488,6 +488,16 @@ uint32_t leftwheel_timeout = 0;
 uint32_t rightwheel_timeout = 0;
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    /* jasonwolfe: ploopyco.c has already turned drag-scroll ball motion into
+       whole notches (divisor 64). Send each one as a full hi-res notch on the
+       hosts where the knob code below uses hi-res too. macOS ignores the
+       resolution multiplier, so a raw 1 is already a full notch there. */
+    if (is_drag_scroll &&
+        (detected_host_os() == OS_WINDOWS || detected_host_os() == OS_LINUX)) {
+        mouse_report.h *= POINTING_DEVICE_HIRES_SCROLL_MULTIPLIER;
+        mouse_report.v *= POINTING_DEVICE_HIRES_SCROLL_MULTIPLIER;
+    }
+
     // throttle reads
     if (timer_elapsed32(last_scroll_time) > 10) {
         uint16_t leftwheel_rawangle = tmag5273_get_angle(TMAG5273_D0_I2C_ADDRESS);
